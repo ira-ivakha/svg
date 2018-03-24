@@ -1,0 +1,117 @@
+* {
+    --even-section-color: #fafafa;
+    --odd-section-color: #f0f0f0;
+    --facebook-color: #205b9d;
+    --twitter-color: #00abe4;
+
+}
+body {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+section {
+    padding: 2vw;
+    box-sizing: border-box;
+    text-align: center;
+}
+section:nth-child(even) {
+    background-color: var(--even-section-color);
+}
+section:nth-child(odd) {
+    background-color: var(--odd-section-color);
+}
+section h2 {
+    text-align: center;
+    margin: 2vw auto;
+    font-size: 2rem;
+}
+nav a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+}
+nav a img {
+    height: 150px;
+    width: 150px;
+}
+button,
+input {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20px 30px;
+    font-size: inherit;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+.flex .item {
+    width: calc( 50% - 60px );
+    padding: 30px;
+}
+.blurred-svg {
+    height: 250px;
+    width: 400px;
+}
+.social-icon {
+    color: #ccc;
+    height: 150px;
+    width: 150px;
+    fill: currentColor ;
+    transition: all 0.2s ease;
+
+}
+.fb-icon:hover {
+    fill: var(--facebook-color);
+}
+.twitter-icon:hover {
+    fill: var(--twitter-color);
+}
+.pie-wrapper {
+    height: 200px;
+    position: relative;
+}
+.pie-svg {
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    stroke-width: 16px;
+    fill: none;
+}
+.pie-bg {
+    stroke: #fff;
+}
+.pie {
+    stroke: #fff;
+    stroke-dasharray: 0 526px;
+    transition: all 500ms ease-in-out;
+    -webkit-transition: all 500ms ease-in-out;
+}
+.pie-animated .pie{
+    stroke: #ff0027;
+}
+.pie-animated .pie {
+    stroke-dasharray: 189px 526px;
+}
+.centered {
+    margin: 10vh auto;
+    display: block;
+}
+.centered:hover {
+    fill: red;
+}
+#canvas {
+    background: url(../images/s800.webp) center no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 800px;
+}

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+    <title>SVG - filters, effects, interaction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main id="fullpage">
+        <section class="section">
+            <h2>Here we will place an SVG</h2>
+            <p>clipPath - <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/clipPath" target="_blank">https://developer.mozilla.org/ru/docs/Web/SVG/Element/clipPath</a></p>
+            <svg class="centered" viewBox="0 0 24 24" width="300" height="300" >
+                <defs>
+                    <clipPath id="myClip">
+                        <circle r="12" cx="12" cy="12" />
+                    </clipPath>
+                </defs>
+                <image xlink:href="images/s800.webp" clip-path="url(#myClip)" height="24" width="30"></image>
+            </svg>
+        </section>
+        <section class="section">
+            <h2>SVG - image</h2>
+            <nav>
+                <a href="facebook.com">
+                    <img src="images/fb.svg" alt="Facebook">
+                </a>
+                <a href="linkedin.com">
+                    <img src="images/in.svg" alt="Linkedin">
+                </a>
+                <a href="twitter.com">
+                    <img src="images/twi.svg" alt="Twitter">
+                </a>
+                <a href="skype.com">
+                    <img src="images/skype.svg" alt="Skype">
+                </a>
+            </nav>
+
+            <h2>SVG - sprites</h2>
+            <p>SVG sprites - inline (in HTML)</p>
+            <svg display="none">
+                <symbol id="fb" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+                    <path d="M733.675,6584.01H712.322a1.322,1.322,0,0,0-1.325,1.32v21.35a1.324,1.324,0,0,0,1.325,1.33h11.5v-9.3H720.69v-3.62h3.128v-2.67c0-3.1,1.893-4.79,4.659-4.79a27.116,27.116,0,0,1,2.8.14v3.24h-1.918c-1.5,0-1.8.72-1.8,1.77v2.31h3.588l-0.468,3.62h-3.12v9.3h6.117a1.325,1.325,0,0,0,1.325-1.33v-21.35A1.322,1.322,0,0,0,733.675,6584.01Z" transform="translate(-711 -6584)"/>
+                </symbol>
+                <symbol id="linkedin" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+                    <path d="M1009.91,6594.82v-0.03l-0.03.03h0.03Zm9.32-10.82H998.772a1.747,1.747,0,0,0-1.774,1.72v20.56a1.746,1.746,0,0,0,1.774,1.71h20.458a1.742,1.742,0,0,0,1.77-1.71v-20.56A1.744,1.744,0,0,0,1019.23,6584Zm-14.96,20.09h-3.62v-10.84h3.62v10.84Zm-1.81-12.32h-0.02A2.07,2.07,0,1,1,1002.46,6591.77Zm14.89,12.32h-3.63v-5.8c0-1.46-.52-2.45-1.83-2.45a1.97,1.97,0,0,0-1.86,1.32,2.344,2.344,0,0,0-.12.88v6.05h-3.63s0.05-9.82,0-10.84h3.63v1.54a3.589,3.589,0,0,1,3.26-1.79c2.39,0,4.18,1.55,4.18,4.87v6.22Z" transform="translate(-997 -6584)"/>
+                </symbol>
+            </svg>
+            <nav>
+                <a href="facebook.com">
+                    <svg class="social-icon fb-icon">
+                        <use xlink:href="#dumbbell"></use>
+                    </svg>
+                </a>
+                <a href="facebook.com">
+                    <svg class="social-icon fb-icon">
+                        <use xlink:href="#fb"></use>
+                    </svg>
+                </a>
+                <a href="twitter.com">
+                    <svg class="social-icon twitter-icon">
+                        <use xlink:href="#linkedin"></use>
+                    </svg>
+                </a>
+            </nav>
+        </section>
+        <section class="section">
+            <button id="start-draw-chart">Start draw chart </button>
+            <input type="number" id="chart-progress" value="36"><span>%</span>
+            <div class="pie-wrapper" id="pie-wrapper">
+                <svg viewBox="0 0 200 200" class="pie-svg pie-bg">
+                    <circle r="84" cx="50%" cy="50%"></circle>
+                </svg>
+                <svg viewBox="0 0 200 200" class="pie-svg pie" id="pie-progress" style="transition-delay: 10ms;">
+                    <circle r="84" cx="50%" cy="50%"></circle>
+                </svg>
+            </div>
+        </section>
+        <section class="section">
+            <h2>Filters</h2>
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Applying_SVG_effects_to_HTML_content">https://developer.mozilla.org/en-US/docs/Web/SVG/Applying_SVG_effects_to_HTML_content</a></p>
+            <div class="flex">
+                <div class="item blurred-item">
+                    <svg class="blurred-svg" viewBox="0 0 400 250">
+                        <style>
+                            .blurred-item:hover .blurred-content0{filter:url(#blur-effect-0)}
+                        </style>
+                        <filter id="blur-effect-0">
+                            <feGaussianBlur stdDeviation="10" />
+                        </filter>
+                        <image xlink:href="images/s800.webp" alt="Scandinavian nature" class="blurred-content0" height="250" width="400"></image>
+                    </svg>
+                </div>
+                <div class="item">
+                    <svg class="blurred-svg" viewBox="0 0 400 250">
+                        <style>.blurred-content1{filter:url(#blur-effect-1)}</style>
+                        <filter id="blur-effect-1">
+                            <feGaussianBlur stdDeviation="2" />
+                        </filter>
+                        <image xlink:href="images/s800.webp" alt="Scandinavian nature" class="blurred-content1" height="250" width="400"></image>
+                    </svg>
+                </div>
+                <div class="item blurred-item">
+                    <svg class="blurred-svg" viewBox="0 0 400 250">
+                        <style>.blurred-item:hover .blurred-content2{filter:url(#filter)}</style>
+                        <filter id="filter">
+                            <!-- COLORS -->
+                            <feFlood flood-color="#582D1B" result="COLOR-red"></feFlood>
+                            <!-- COLORS END -->
+
+                            <!-- FRACTAL TEXTURE -->
+                            <feTurbulence baseFrequency=".05,.004" top="-50%" type="fractalNoise" numOctaves="4" seed="0" result="FRACTAL-TEXTURE_10"></feTurbulence>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0,
+          0 0 0 0 0,
+          0 0 0 0 0,
+          0 0 0 -1.2 1.1" in="FRACTAL-TEXTURE_10" result="FRACTAL-TEXTURE_20"></feColorMatrix>
+                            <!-- FRACTAL TEXTURE END -->
+
+                            <!-- STROKE -->
+                            <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="STROKE_10"></feMorphology>
+                            <!-- STROKE END -->
+
+                            <!-- EXTRUDED BEVEL -->
+                            <feConvolveMatrix order="8,8" divisor="1" kernelMatrix="1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1" in="STROKE_10" result="BEVEL_20"></feConvolveMatrix>
+
+                            <feOffset dx="4" dy="4" in="BEVEL_20" result="BEVEL_25"></feOffset>
+                            <feComposite operator="out" in="BEVEL_25" in2="STROKE_10" result="BEVEL_30"></feComposite>
+                            <feComposite in="COLOR-red" in2="BEVEL_30" operator="in" result="BEVEL_40"></feComposite>
+                            <feMerge result="BEVEL_50">
+                                <feMergeNode in="BEVEL_40"></feMergeNode>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                            </feMerge>
+                            <!-- EXTRUDED BEVEL END -->
+
+                            <feComposite in2="FRACTAL-TEXTURE_20" in="BEVEL_50" operator="in"></feComposite>
+                        </filter>
+                        <image xlink:href="images/s800.webp" alt="Scandinavian nature" class="blurred-content2" height="250" width="400"></image>
+                    </svg>
+                </div>
+                <div class="item"></div>
+            </div>
+
+        </section>
+        <section class="section">
+            <h2>Useful links</h2>
+
+            <ul>
+                <li>
+                    <a href="https://jqueryhouse.com/svg-javascript-libraries-for-developers/" target="_blank">SVG JavaScript Libraries for Developers</a>
+                </li>
+                <li>
+                    <a href="https://www.smashingmagazine.com/2014/11/styling-and-animating-svgs-with-css/" target="_blank">Sara Soueidan - Styling And Animating SVGs With CSS</a>
+                </li>
+                <li>
+                    <a href="https://css-tricks.com/cascading-svg-fill-color/">Chris Coyier - Cascading SVG Fill Color</a>
+                </li>
+                <li>
+                    <a href="https://github.com/svg/svgo" target="_blank">SVGO - compressing SVG</a>
+                </li>
+                <li>
+                    <a href="https://jakearchibald.github.io/svgomg/">SVGOMG - SVGO's Missing GUI</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.js"></script>
+<script src="app.js"></script>
+</html>
